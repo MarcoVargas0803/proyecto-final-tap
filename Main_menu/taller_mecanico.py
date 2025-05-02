@@ -1,4 +1,5 @@
-import bd_management as bd
+from Main_menu import bd_management as bd
+
 
 def menu():
     bd.limpiar_pantalla()

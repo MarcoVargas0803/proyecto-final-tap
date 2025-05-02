@@ -1,10 +1,12 @@
 import costos_preventivos as cost_prev
 import costos_correctivos as cost_corr
 
+
+
 # Clase Auto
 class Auto:
     def __init__(self, propietario, marca, modelo, anio, costo_total=0, tipo_mantenimiento="", id=None):
-        self.id = id
+        self.placa = id
         self.propietario = propietario
         self.marca = marca
         self.modelo = modelo
