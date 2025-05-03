@@ -2,10 +2,6 @@ from Main_menu import bd_management as bd
 
 
 def menu():
-    bd.limpiar_pantalla()
-    bd.crear_base_datos()
-    if not bd.iniciar_sesion():
-        return
     while True:
         print("\n--- Menú ---")
         print("1. Agregar auto")

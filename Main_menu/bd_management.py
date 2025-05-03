@@ -63,19 +63,6 @@ def limpiar_pantalla():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def iniciar_sesion():
-    correo_valido = "alicia@gmail.com"
-    contrasena_valida = "1234"
-    while True:
-        correo = input("Ingrese su correo electrónico: ")
-        contrasena = input("Ingrese su contraseña: ")
-        if correo == correo_valido and contrasena == contrasena_valida:
-            print("Inicio de sesión exitoso.\n")
-            return True
-        else:
-            print("Credenciales inválidas. Intente de nuevo.\n")
-
-
 def agregar_auto():
     propietario = input("Nombre del propietario: ")
     while not re.match(r"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", propietario):

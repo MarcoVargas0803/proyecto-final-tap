@@ -1,12 +1,11 @@
-import costos_preventivos as cost_prev
-import costos_correctivos as cost_corr
-
+from costos import CostosCorrectivos as Cost_corr
+from costos import CostosPreventivos as Cost_prev
 
 
 # Clase Auto
 class Auto:
     def __init__(self, propietario, marca, modelo, anio, costo_total=0, tipo_mantenimiento="", id=None):
-        self.placa = id
+        self.id = id
         self.propietario = propietario
         self.marca = marca
         self.modelo = modelo
@@ -18,21 +17,21 @@ class Auto:
         self.tipo_mantenimiento = "preventivo"
         for opcion in opciones:
             if opcion == "1":
-                self.costo_total += cost_prev.llantas_con_desgaste(kilometraje)
+                self.costo_total += Cost_prev.llantas_con_desgaste(kilometraje)
             elif opcion == "2":
-                self.costo_total += cost_prev.cambio_aceite(kilometraje)
+                self.costo_total += Cost_prev.cambio_aceite(kilometraje)
             elif opcion == "3":
-                self.costo_total += cost_prev.aceite_transmision(kilometraje)
+                self.costo_total += Cost_prev.aceite_transmision(kilometraje)
             elif opcion == "4":
-                self.costo_total += cost_prev.amortiguadores(kilometraje)
+                self.costo_total += Cost_prev.amortiguadores(kilometraje)
             elif opcion == "5":
-                self.costo_total += cost_prev.caja_estandar(kilometraje)
+                self.costo_total += Cost_prev.caja_estandar(kilometraje)
             elif opcion == "6":
-                self.costo_total += cost_prev.caja_automatica(kilometraje)
+                self.costo_total += Cost_prev.caja_automatica(kilometraje)
             elif opcion == "7":
-                self.costo_total += cost_prev.sensores_luz(kilometraje)
+                self.costo_total += Cost_prev.sensores_luz(kilometraje)
             elif opcion == "8":
-                self.costo_total += cost_prev.refrigerante(kilometraje)
+                self.costo_total += Cost_prev.refrigerante(kilometraje)
             else:
                 print(f"Opción no válida: {opcion}")
 
@@ -40,19 +39,19 @@ class Auto:
         self.tipo_mantenimiento = "correctivo"
         for opcion in opciones:
             if opcion == "1":
-                self.costo_total += cost_corr.desvielado(kilometraje)
+                self.costo_total += Cost_corr.desvielado(kilometraje)
             elif opcion == "2":
-                self.costo_total += cost_corr.caja_automatica(kilometraje)
+                self.costo_total += Cost_corr.caja_automatica(kilometraje)
             elif opcion == "3":
-                self.costo_total += cost_corr.caja_manual(kilometraje)
+                self.costo_total += Cost_corr.caja_manual(kilometraje)
             elif opcion == "4":
-                self.costo_total += cost_corr.motor(kilometraje)
+                self.costo_total += Cost_corr.motor(kilometraje)
             elif opcion == "5":
-                self.costo_total += cost_corr.llanta_ponchada(kilometraje)
+                self.costo_total += Cost_corr.llanta_ponchada(kilometraje)
             elif opcion == "6":
-                self.costo_total += cost_corr.fallas_filtros(kilometraje)
+                self.costo_total += Cost_corr.fallas_filtros(kilometraje)
             elif opcion == "7":
-                self.costo_total += cost_corr.fallas_bateria(kilometraje)
+                self.costo_total += Cost_corr.fallas_bateria(kilometraje)
             else:
                 print(f"Opción no válida: {opcion}")
 
