@@ -12,7 +12,7 @@ class Registro(ct.CTkToplevel):
         self.geometry("800x650")
         self.resizable(False, False)
 
-        self.foto_path = "usuario.png"
+        self.foto_path = "Coche2.png"
 
         self.configurar_grid()
         self.crear_frames()
@@ -24,14 +24,14 @@ class Registro(ct.CTkToplevel):
             self.grid_rowconfigure(i, weight=1)
 
     def crear_frames(self):
-        self.titulo = ct.CTkFrame(self, border_width=2)
-        self.f1 = ct.CTkFrame(self, border_width=2)
-        self.f2 = ct.CTkFrame(self, border_width=2)
-        self.f3 = ct.CTkFrame(self, border_width=2)
-        self.f4 = ct.CTkFrame(self, border_width=2)
-        self.f5 = ct.CTkFrame(self, border_width=2)
-        self.f6 = ct.CTkFrame(self, border_width=2)
-        self.f7 = ct.CTkFrame(self, border_width=2)
+        self.titulo = ct.CTkFrame(self, border_width=2, fg_color="#041573")
+        self.f1 = ct.CTkFrame(self, border_width=2, border_color="#041573")
+        self.f2 = ct.CTkFrame(self, border_width=2, border_color="#041573")
+        self.f3 = ct.CTkFrame(self, border_width=2, border_color="#041573")
+        self.f4 = ct.CTkFrame(self, border_width=2, border_color="#041573")
+        self.f5 = ct.CTkFrame(self, border_width=2, border_color="#041573")
+        self.f6 = ct.CTkFrame(self, border_width=2, border_color="#041573")
+        self.f7 = ct.CTkFrame(self, border_width=2, border_color="#041573")
 
         self.titulo.grid(row=0, column=0, sticky="nsew", pady=5, padx=5)
         self.f1.grid(row=1, column=0, sticky="nsew", pady=5, padx=5)
@@ -44,17 +44,17 @@ class Registro(ct.CTkToplevel):
 
     def crear_widgets(self):
         # Labels
-        ct.CTkLabel(self.titulo, text="Registro de usuario", text_color="White", font=("Helvetica", 25)).pack(padx=10, pady=10,side="left")
-        ct.CTkLabel(self.f1, text="Nombre:", text_color="White").pack(side="left", padx=10, pady=10)
-        ct.CTkLabel(self.f2, text="Apellido:", text_color="White").pack(side="left", padx=10, pady=10)
-        ct.CTkLabel(self.f3, text="Email:", text_color="White").pack(side="left", padx=10, pady=10)
-        ct.CTkLabel(self.f4, text="Password:", text_color="White").pack(side="left", padx=10, pady=10)
-        ct.CTkLabel(self.f5, text="Verify Password:", text_color="White").pack(side="left", padx=10, pady=10)
-        ct.CTkLabel(self.f6, text="Usuario:", text_color="White").pack(side="left", padx=10, pady=10)
-        ct.CTkLabel(self.titulo, text=" " , text_color="White", font=("Helvetica", 10)).pack(padx=10, pady=10,side="right")
+        ct.CTkLabel(self.titulo, text="Registro de usuario", text_color="White", font=("Book Antiqua", 35)).pack(padx=10, pady=10,side="left")
+        ct.CTkLabel(self.f1, text="Nombre:", text_color="Black", font=("Book Antiqua",20)).pack(side="left", padx=10, pady=10)
+        ct.CTkLabel(self.f2, text="Apellido:", text_color="Black", font=("Book Antiqua",20)).pack(side="left", padx=10, pady=10)
+        ct.CTkLabel(self.f3, text="Email:", text_color="Black", font=("Book Antiqua",20)).pack(side="left", padx=10, pady=10)
+        ct.CTkLabel(self.f4, text="Password:", text_color="Black", font=("Book Antiqua",20)).pack(side="left", padx=10, pady=10)
+        ct.CTkLabel(self.f5, text="Verify Password:", text_color="Black", font=("Book Antiqua",20)).pack(side="left", padx=10, pady=10)
+        ct.CTkLabel(self.f6, text="Usuario:", text_color="Black", font=("Book Antiqua",20)).pack(side="left", padx=10, pady=10)
+        ct.CTkLabel(self.titulo, text=" " , text_color="White", font=("Helvetica", 10)).pack(padx=10, pady=10, side="right")
 
         # Entradas de texto
-        self.entrada_nombre = ct.CTkEntry(self.f1,placeholder_text="Fulanito Alberto",width=400)
+        self.entrada_nombre = ct.CTkEntry(self.f1,placeholder_text="Fulanito Alberto",width=400, text_color="#041573")
         self.entrada_nombre.pack(padx=20, pady=5, side="right")
         self.entrada_nombre.bind("<FocusIn>")
 
@@ -89,12 +89,14 @@ class Registro(ct.CTkToplevel):
         self.image_label.pack(padx=5,pady=15,side="right")
 
         self.error_label = ct.CTkLabel(self.titulo,text=" ",font=("Helvetica",15),corner_radius=20)
-        self.error_label.pack(side="right",padx=10,pady=10)
+        self.error_label.pack(side="right",padx=10, pady=10)
 
 
         # Botón de Registro
-        self.boton_registrar = ct.CTkButton(self.f7, text="Registrar", command=self.registrar_usuario,fg_color="gray",hover_color="#438713",text_color="black")
+        self.boton_registrar = ct.CTkButton(self.f7, text="Registrar", command=self.registrar_usuario,fg_color="#041573",hover_color="#438713",text_color="white", font=("Book Antiqua", 15))
+        #self.boton_registrar.grid(row=7, column=0, sticky="nsew", pady=5, padx=5)
         self.boton_registrar.pack(pady=10)
+
 
         # Barra de progreso (oculta al inicio)
         self.progress = ct.CTkProgressBar(self)
@@ -153,7 +155,7 @@ class Registro(ct.CTkToplevel):
 
 
     def on_focus_in_name(self, e):
-        self.entrada_nombre.configure(text_color="white")
+        self.entrada_nombre.configure(text_color="#041573")
         self.error_label.configure(text=" Nombre de pila ",fg_color="#9197a1",text_color="black")
         self.after(1500,self.hide_label)
 
@@ -161,7 +163,7 @@ class Registro(ct.CTkToplevel):
         self.entrada_nombre.configure(text_color="gray")
 
     def on_focus_in_lastname(self, e):
-        self.entrada_apellido.configure(text_color="white")
+        self.entrada_apellido.configure(text_color="#041573")
         self.error_label.configure(text=" 1er y 2ndo Apellido ",fg_color="#9197a1",text_color="black")
         self.after(1500,self.hide_label)
 
@@ -169,7 +171,7 @@ class Registro(ct.CTkToplevel):
         self.entrada_apellido.configure(text_color="gray")
 
     def on_focus_in_password(self, e):
-        self.entrada_password.configure(text_color="white")
+        self.entrada_password.configure(text_color="#041573")
         self.error_label.configure(text=" Almenos un caracter especial ",fg_color="#9197a1",text_color="black")
         self.after(1500,self.hide_label)
 
@@ -178,7 +180,7 @@ class Registro(ct.CTkToplevel):
         self.entrada_password.configure(text_color="gray")
 
     def on_focus_in_password_v(self, e):
-        self.entrada_verify_password.configure(text_color="white")
+        self.entrada_verify_password.configure(text_color="#041573")
         self.error_label.configure(text=" Verificar contraseña ",fg_color="#9197a1",text_color="black")
         self.after(1500,self.hide_label)
 
@@ -195,7 +197,7 @@ class Registro(ct.CTkToplevel):
         self.entrada_verify_password.configure(show="*")
 
     def on_focus_in_email(self, e):
-        self.entrada_email.configure(text_color="white")
+        self.entrada_email.configure(text_color="#041573")
         self.error_label.configure(text=" Correo personal u institucional ",fg_color="#9197a1",text_color="black")
         self.after(1500,self.hide_label)
 
@@ -204,7 +206,7 @@ class Registro(ct.CTkToplevel):
         self.entrada_email.configure(text_color="gray")
 
     def on_focus_in_user(self, e):
-        self.entrada_usuario.configure(text_color="gray")
+        self.entrada_usuario.configure(text_color="#041573")
         self.error_label.configure(text=" Nombre de usuario ",fg_color="#9197a1",text_color="black")
         self.after(1500,self.hide_label)
 

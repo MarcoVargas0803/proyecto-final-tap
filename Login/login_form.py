@@ -11,17 +11,31 @@ class LoginApp(ct.CTk):
         self.geometry("400x500")
         self.resizable(False, False)
         self.title("Login Page")
+        self.configure(fg_color="#D2DFD9")
 
         # Modo de apariencia
         ct.set_appearance_mode("System")
         ct.set_default_color_theme("blue")
 
         self.configure_grid()
+        self.plantilla()
         self.create_widgets()
 
     def configure_grid(self):
         self.grid_rowconfigure((0, 1, 2, 3, 4), weight=1)
         self.grid_columnconfigure(0, weight=1)
+
+    def plantilla(self):
+        self.frame1 = ct.CTkFrame(self, fg_color="#041573")
+        self.frame1.grid(row=0,column=0, sticky="nsew")
+
+        self.imagen_pil = Image.open("Coche2.png")
+        self.imagen = ct.CTkImage(light_image=self.imagen_pil, size=(150, 60))
+        self.jpg = ct.CTkLabel(self.frame1, image=self.imagen, text=" ")
+        self.jpg.grid(row=0, column=0, sticky="nsew")
+
+        self.etiqueta1 = ct.CTkLabel(self.frame1, text="Login", font=("Book Antiqua", 35), text_color="white")
+        self.etiqueta1.grid(row=0, column=1, sticky="nsew")
 
     def create_widgets(self):
         # Imagen de logo con manejo de errores
@@ -36,38 +50,37 @@ class LoginApp(ct.CTk):
             image_login = None
 
         self.image_label = ct.CTkLabel(self, image=image_login, text="") if image_login else ct.CTkLabel(self, text="Sin imagen")
-        self.image_label.grid(row=0, column=0, padx=5)
+        self.image_label.grid(row=1, column=0, padx=5)
 
         # Entradas de usuario y contraseña
-        self.entry_user = ct.CTkEntry(self, text_color="white", placeholder_text="User Name")
-        self.entry_user.grid(row=1, column=0, sticky="ew", padx=10)
+        self.entry_user = ct.CTkEntry(self, text_color="#041573", placeholder_text="User Name", border_color="#041573", border_width=2)
+        self.entry_user.grid(row=2, column=0, sticky="ew", padx=10)
         self.entry_user.bind("<KeyRelease>", self.validar_usuario)
 
-
-        self.entry_password = ct.CTkEntry(self, text_color="white", placeholder_text="Password", show="*",width=350)
-        self.entry_password.grid(row=2, column=0, sticky="w", padx=10)
+        self.entry_password = ct.CTkEntry(self, text_color="#041573", placeholder_text="Password", show="*",width=350, border_color="#041573", border_width=2)
+        self.entry_password.grid(row=3, column=0, sticky="w", padx=10)
 
         # Botón para mostrar/ocultar contraseña
-        self.toggle_password_btn = ct.CTkButton(self, text="👁", width=30, command=self.toggle_password,fg_color="gray",hover_color="green",text_color="black")
-        self.toggle_password_btn.grid(row=2, column=0, padx=5,sticky="e")
+        self.toggle_password_btn = ct.CTkButton(self, text="👁", width=30, command=self.toggle_password,fg_color="#041573",hover_color="green",text_color="white")
+        self.toggle_password_btn.grid(row=3, column=0, padx=5,sticky="e")
 
         # Botón de login
-        self.button_login = ct.CTkButton(self, text="Login", text_color="black", fg_color="gray",
+        self.button_login = ct.CTkButton(self, text="Login", text_color="white", fg_color="#041573", font=("Book Antiqua", 15),
                                          hover_color="#438713", corner_radius=6, width=100, height=35,
                                          command=self.submit_login)
-        self.button_login.grid(row=3, column=0,pady=10,padx=10,sticky="w")
+        self.button_login.grid(row=4, column=0,pady=10,padx=10,sticky="w")
 
         # Label de registro
-        self.register_me = ct.CTkLabel(self, text="¿Sin usuario? Registrate!", text_color="#cacfed",
-                                       font=("Helvetica", 15, "underline"))
-        self.register_me.grid(row=3, column=0, sticky="es", padx=5, pady=10)
+        self.register_me = ct.CTkLabel(self, text="¿Sin usuario? Registrate!", text_color="#041573",
+                                       font=("Helvetica", 12, "underline"))
+        self.register_me.grid(row=4, column=0, sticky="es", padx=5, pady=10)
 
         self.error_label = ct.CTkLabel(self,font=("Helvetica", 20),text=" ")
-        self.error_label.grid(row=4, column=0, sticky="nsew", padx=10, pady=10)
+        self.error_label.grid(row=5, column=0, sticky="nsew", padx=5, pady=10)
 
         # Barra de progreso (oculta al inicio)
         self.progress = ct.CTkProgressBar(self,progress_color="#5ccc58")
-        self.progress.grid(row=5, column=0, padx=10, pady=10, sticky="ew")
+        self.progress.grid(row=6, column=0, padx=10, pady=10, sticky="ew")
         self.progress.set(0)  # Iniciar en 0
 
         # Eventos bind
@@ -104,7 +117,7 @@ class LoginApp(ct.CTk):
         self.entry_password.configure(show="*")
 
     def on_focus_in_user(self, event):
-        self.entry_user.configure(text_color="white")
+        self.entry_user.configure(text_color="#041573")
         self.error_label.configure(text="Ingresa usuario",fg_color="gray",font=("Helvetica",20),text_color="black",corner_radius=40)
         self.after(1000,self.hide_label)
 
@@ -112,7 +125,7 @@ class LoginApp(ct.CTk):
         self.entry_user.configure(text_color="gray")
 
     def on_focus_in_password(self, event):
-        self.entry_password.configure(text_color="white")
+        self.entry_password.configure(text_color="#041573")
         self.error_label.configure(text="",fg_color="transparent")
         self.error_label.configure(text="Ingresa contraseña", fg_color="gray", font=("Helvetica", 20),text_color="black",corner_radius=40)
         self.after(1000, self.hide_label)
