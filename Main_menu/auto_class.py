@@ -4,7 +4,7 @@ from costos import CostosPreventivos as Cost_prev
 
 # Clase Auto
 class Auto:
-    def __init__(self, propietario, marca, modelo, anio, costo_total=0, tipo_mantenimiento="", id=None):
+    def __init__(self, propietario=None, marca=None, modelo=None, anio=None, costo_total=0, tipo_mantenimiento="", id=None):
         self.id = id
         self.propietario = propietario
         self.marca = marca
