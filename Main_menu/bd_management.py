@@ -2,6 +2,8 @@ import os
 import re
 import sqlite3
 from Main_menu.auto_class import Auto
+
+
 # Funciones para manejo de base de datos
 def crear_base_datos():
     conn = sqlite3.connect("../taller_mecanico.db")
@@ -46,6 +48,16 @@ def obtener_autos():
     return [Auto(id=row[0], propietario=row[1], marca=row[2], modelo=row[3], anio=row[4], costo_total=row[5],
                  tipo_mantenimiento=row[6]) for row in rows]
 
+#Obtener registros de la tabla
+def obtener_lista_autos():
+    conn = sqlite3.connect("../taller_mecanico.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM autos")
+    registros = cursor.fetchall()
+
+    conn.close()
+    return registros
 
 def actualizar_auto(auto):
     conn = sqlite3.connect("../taller_mecanico.db")
@@ -123,4 +135,3 @@ def mostrar_autos():
             print(auto.info_basica())
     else:
         print("No hay autos registrados.")
-

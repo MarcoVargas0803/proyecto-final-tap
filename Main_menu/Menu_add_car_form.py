@@ -2,6 +2,7 @@ import customtkinter as ct
 from customtkinter import CTkImage
 from PIL import Image
 from auto_class import Auto
+import bd_management as bd
 #Esta es una clase que permite hacer de diferentes funcionalidades con las images
 class ImageManagement:
     def __init__(self, path_list: list):
@@ -113,7 +114,10 @@ class FrameMain(ct.CTkFrame):
         new_car.anio = int(self.year_combobox.get())
 
         # Aquí podrías guardar el auto en la base de datos
-        print(f"Auto creado: {new_car.to_dict()}")
+        bd.guardar_auto(new_car)
+        # Limpiar los entries después de agregar el auto
+        for entry in self.entries_list_to_db:
+            entry.delete(0, ct.END)
 
 class AppAddCar(ct.CTkToplevel):
     def __init__(self):
