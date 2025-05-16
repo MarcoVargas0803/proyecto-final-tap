@@ -2,13 +2,11 @@ import customtkinter as ct
 from Menu_add_car_form import AppAddCar
 from Menu_maintaince_car_form import AppMaintenanceCar
 from Menu_show_cars_form import AppMenuShowCars
-
 import customtkinter as ct
 from customtkinter import CTkImage
 from PIL import Image
 #Esta es una clase que permite hacer de diferentes funcionalidades con las imagenes
 class ImageManagement:
-    ("logo_empresa.jpg", "imagen_main_1.png", "imagen_main_2.png",)
     def __init__(self, path_list: list):
         self.paths = path_list
 
