@@ -135,10 +135,6 @@ class AppMenuShowCars(ct.CTkToplevel):
         self.title("Add Car")
         self.configure(fg_color="#D2DFD9")
 
-        # Modo de apariencia
-        ct.set_appearance_mode("System")
-        ct.set_default_color_theme("blue")
-
         #Configuración Inicial de self
         self.grid_columnconfigure(0,weight=1)
         self.grid_rowconfigure(0,weight=0)

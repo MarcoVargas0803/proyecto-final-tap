@@ -32,6 +32,8 @@ class FrameTitle(ct.CTkFrame):
         self.grid(row=0, column=0, sticky="nsew")
         self.grid_columnconfigure(index=(0,1),weight=1)
         self.grid_rowconfigure(index=0,weight=1)
+        self.configure(fg_color="#041471", corner_radius=0)
+
 
         #Llamamos a la clase ImageManagement.open_images() para abrir la imagen
         # open_images recibe una lista de rutas y devuelve una lista de CtkImage
@@ -116,7 +118,3 @@ class AppMaintenanceCar(ct.CTkToplevel):
         self.frame_main_add_car = FrameMain(self, ["Propietario","Marca", "Modelo"],
         ["Propietario","Ingrese la marca", "Ingrese el modelo", "Seleccione el año"])
         self.frame_main_add_car.grid(column=0, row=1, sticky="nsew", padx=10, pady=10)
-
-        # Modo de apariencia
-        ct.set_appearance_mode("System")
-        ct.set_default_color_theme("blue")
